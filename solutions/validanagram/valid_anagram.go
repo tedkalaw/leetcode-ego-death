@@ -1,5 +1,9 @@
 package validanagram
 
+import (
+	"slices"
+)
+
 // ValidAnagram determines if two strings are anagrams of each other.
 // An anagram is a string that contains the exact same characters as another string,
 // but the order of the characters can be different.
@@ -24,6 +28,16 @@ func HashMapSolution(s string, t string) bool {
 	return true
 }
 
+// Learned:
+// General type conversion
+// Converting from a string to a slice of runes
+// sort.Slice vs slices.Sort vs slices.SortFunc
 func SortSolution(s string, t string) bool {
-	return false
+	sRunes := []rune(s)
+	tRunes := []rune(t)
+
+	slices.Sort(sRunes)
+	slices.Sort(tRunes)
+
+	return string(sRunes) == string(tRunes)
 }
