@@ -3,10 +3,14 @@ package tests
 import (
 	"testing"
 
-	"github.com/tedkalaw/leetcode-ego-death/solutions"
+	"github.com/tedkalaw/leetcode-ego-death/solutions/validanagram"
 )
 
 func TestValidAnagram(t *testing.T) {
+	solutions := map[string]func(string, string) bool{
+		"hashmap": validanagram.HashMapSolution,
+	}
+
 	testCases := []struct {
 		name string
 		s    string
@@ -135,11 +139,15 @@ func TestValidAnagram(t *testing.T) {
 		},
 	}
 
-	for _, tc := range testCases {
-		t.Run(tc.name, func(t *testing.T) {
-			got := solutions.ValidAnagram(tc.s, tc.t)
-			if got != tc.want {
-				t.Errorf("ValidAnagram(%v, %v) = %v; want %v", tc.s, tc.t, got, tc.want)
+	for name, solution := range solutions {
+		t.Run(name, func(t *testing.T) {
+			for _, tc := range testCases {
+				t.Run(tc.name, func(t *testing.T) {
+					got := solution(tc.s, tc.t)
+					if got != tc.want {
+						t.Errorf("ValidAnagram(%v, %v) = %v; want %v", tc.s, tc.t, got, tc.want)
+					}
+				})
 			}
 		})
 	}

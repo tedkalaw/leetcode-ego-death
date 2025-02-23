@@ -1,10 +1,10 @@
-package solutions
+package validanagram
 
 // ValidAnagram determines if two strings are anagrams of each other.
 // An anagram is a string that contains the exact same characters as another string,
 // but the order of the characters can be different.
 // The strings consist of lowercase English letters only.
-func ValidAnagram(s string, t string) bool {
+func HashMapSolution(s string, t string) bool {
 	if len(s) != len(t) {
 		return false
 	}
