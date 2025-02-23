@@ -23,3 +23,7 @@ func HashMapSolution(s string, t string) bool {
 
 	return true
 }
+
+func SortSolution(s string, t string) bool {
+	return false
+}

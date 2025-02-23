@@ -9,6 +9,7 @@ import (
 func TestValidAnagram(t *testing.T) {
 	solutions := map[string]func(string, string) bool{
 		"hashmap": validanagram.HashMapSolution,
+		"sort":    validanagram.SortSolution,
 	}
 
 	testCases := []struct {
